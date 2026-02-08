@@ -23,7 +23,7 @@ add_compile_options(-Wall)
 
 add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-std=c++17>)
 
-if((PICO_BOARD STREQUAL "pico") OR (PICO_BOARD STREQUAL "pico2"))
+if((PICO_BOARD STREQUAL "pico") OR (PICO_BOARD STREQUAL "pico2") OR (PICO_BOARD STREQUAL "pico_w"))
 add_compile_definitions(GPIO_VALID_PINS_BASE=0b00011100011111111111111111111111)
 endif()
 
@@ -48,7 +48,7 @@ add_executable(remapper
     src/xbox.cc
 )
 
-if((PICO_BOARD STREQUAL "pico") OR (PICO_BOARD STREQUAL "pico2"))
+if((PICO_BOARD STREQUAL "pico") OR (PICO_BOARD STREQUAL "pico2") OR (PICO_BOARD STREQUAL "pico_w"))
 target_compile_definitions(remapper PUBLIC PICO_DEFAULT_UART_TX_PIN=16)
 target_compile_definitions(remapper PUBLIC PICO_DEFAULT_UART_RX_PIN=17)
 target_compile_definitions(remapper PUBLIC PICO_DEFAULT_PIO_USB_DP_PIN=0)
